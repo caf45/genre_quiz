@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+        }
+
+        table {
+            border: 1px solid white;
+            border-collapse: collapse;
+            padding: 5px;
+            text-align: left;
+            margin: auto;
+            width: 60%;
+        }
+
+        th, td {
+            border: 1px solid white;
+            font-weight: normal;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+        }
+
+        h1 {
+            color: lightblue;
+            text-transform: uppercase;
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            font-size: 1.3rem; /* Bigger size */
+            color: white;      /* Matches all text */
+            font-weight: normal;
+        }
+    </style>
+    <script src="calculateScore.js"></script>
+</head>
+
+<body>
+    <h2 id="score"></h2>
+    <h2 id="message"></h2>
+
+    <table id="results-table">
+        <tr>
+            <th>GENRE</th>
+            <th>ANSWER</th>
+            <th>RESULT</th>
+        </tr>
+    </table>
+
+    <p class="contact-info">For any issues or questions email cristi.florea2929@gmail.com</p>
+
+    <script>
+        let userAnswers = JSON.parse(localStorage.getItem('userAnswers'));
+        let result = calculateScore(userAnswers);
+        let scoreElement = document.getElementById('score');
+        let messageElement = document.getElementById('message');
+        scoreElement.textContent = "FINAL SCORE: " + result.percentageScore + "%";
+        scoreElement.style.color = result.color;
+        messageElement.textContent = result.message;
+        messageElement.style.color = result.color;
+
+        let resultsTable = document.getElementById('results-table');
+
+        for (let i = 0; i < userAnswers.length; i++) {
+            let row = resultsTable.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            let cell3 = row.insertCell(2);
+
+            cell1.textContent = userAnswers[i].question;
+            cell2.textContent = userAnswers[i].answer;
+            cell3.innerHTML = userAnswers[i].result ? "<span style='color:green'>✔</span>" : "<span style='color:red'>✖</span>";
+        }
+    </script>
+</body>
+
+</html>

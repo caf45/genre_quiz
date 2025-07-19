@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real or Fake Genre</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .center-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .button-container {
+            display: flex; /* Use flexbox to align buttons horizontally */
+            margin-top: 1rem; /* KEEP original space below genre name */
+            justify-content: center; /* Center buttons horizontally */
+        }
+
+        .button-container button {
+            margin: 0 1rem; /* Add spacing between the buttons */
+        }
+
+        .result {
+            margin-top: 0.25rem; /* tighter spacing ONLY below buttons */
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        #done-message {
+            font-size: 24px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="center-content">
+    <h1 id="question" class="text-4xl mt-10"><strong id="genre"></strong></h1>
+
+    <div class="button-container">
+        <!-- Genre choice buttons -->
+        <button id="real-button" class="text-2xl font-bold bg-green-500 rounded-lg py-5 px-10">REAL</button>
+        <button id="fake-button" class="text-2xl font-bold bg-red-500 rounded-lg py-5 px-10">FAKE</button>
+    </div>
+
+    <!-- DONE message, initially hidden -->
+    <p id="done-message" style="display: none;">DONE! Let's see how you did.</p>
+
+    <!-- Results button, initially hidden -->
+    <div class="button-container">
+        <button id="results-button" class="text-2xl font-bold bg-blue-500 rounded-lg py-2 px-4 uppercase" style="display: none;">Check Results</button>
+    </div>
+
+    <p id="result" class="result"></p>
+
+    <script src="quiz.js"></script>
+</body>
+
+</html>
